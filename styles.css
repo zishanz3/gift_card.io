@@ -187,3 +187,20 @@ iframe {
         transform: scale(1.5);
     }
 }
+
+.gift-options {
+    text-align: center;
+    padding: 20px;
+}
+
+.gift-option {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.gift-option img {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 10px;
+}
