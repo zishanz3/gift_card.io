@@ -19,10 +19,15 @@ function showSlideshow() {
     showSlide(slideIndex); // Show the first slide
 }
 
+function showGiftOptions() {
+    document.getElementById('slideshowPage').style.display = 'none';
+    document.getElementById('giftOptions').style.display = 'block'; // Show the gift options page
+}
+
 function showHearts() {
     var heartContainer = document.getElementById('heartContainer');
     heartContainer.innerHTML = ''; // Clear previous hearts
-    for (let i = 0; i < 50; i++) { // Increased number of hearts
+    for (let i = 0; i < 30; i++) { // Increased number of hearts
         var heart = document.createElement('div');
         heart.innerHTML = Math.random() < 0.33 ? '🤍' : Math.random() < 0.5 ? '🩷' : '💗';
         heart.className = 'heart';
@@ -67,17 +72,38 @@ function nextSlide() {
     showSlide(slideIndex); // Show the next slide
 }
 
-// Show the form page
-function showFormPage() {
-    document.querySelector('.slideshow-page').style.display = 'none';
-    document.getElementById('formPage').style.display = 'flex'; // Use 'flex' to match layout
-}
-
-// Event Listeners
+// Initial setup
 document.getElementById('surpriseButton').addEventListener('click', showMessage);
 document.getElementById('nextSurpriseButton').addEventListener('click', showSlideshow);
 document.getElementById('nextButton').addEventListener('click', nextSlide);
-document.getElementById('giftButton').addEventListener('click', showFormPage);
+document.getElementById('giftButton').addEventListener('click', showGiftOptions); // Show gift options page on button click
 
-// Initial setup
+// Ensure the initial setup is correct
 showSlide(slideIndex); // Ensure the first slide is displayed on load
+
+
+const scriptUrl = 'https://script.google.com/macros/s/AKfycbzzqrq34aPuJj-86vAmUZ3i76ODWZtnmEH1vJIv-UqYEk_dAVyZwLuQ45khOD1eI4fA2w/exec'; // Replace with your Google Apps Script web app URL
+
+function showGiftOptions() {
+    document.getElementById('slideshowPage').style.display = 'none';
+    document.getElementById('giftOptions').style.display = 'block'; // Show the gift options page
+}
+
+function selectGift(gift) {
+    const payload = { gift: gift };
+    
+    fetch(scriptUrl, {
+        method: 'POST',
+        contentType: 'application/json',
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Success:', data);
+        document.getElementById('giftOptions').style.display = 'none'; // Hide gift options
+        document.getElementById('confirmationMessage').style.display = 'block'; // Show confirmation message
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
