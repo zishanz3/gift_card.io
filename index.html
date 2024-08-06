@@ -128,13 +128,30 @@
         <button id="nextButton">Next</button>
     </div>
 
-<div class="form-page" id="formPage">
-        <div class="form-container">
-           <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeoaBY6_xxNKrvjA22RK6Um_JP6mq8zIPI0xWTDjSXOgwjFrw/viewform?embedded=true" width="640" height="458" frameborder="0" marginheight="0" marginwidth="0" TitleArea="0" >Loading…</iframe>
-        </div>
+<!-- Gift Options Page -->
+<div id="giftOptions" style="display: none;">
+    <h1>Choose Your Gift</h1>
+    <div class="gift-option">
+        <img src="gift1.jpg" alt="Gift 1">
+        <p>Gift 1 Name</p>
+        <button onclick="selectGift('Gift 1')">Select</button>
     </div>
+    <div class="gift-option">
+        <img src="gift2.jpg" alt="Gift 2">
+        <p>Gift 2 Name</p>
+        <button onclick="selectGift('Gift 2')">Select</button>
+    </div>
+    <div class="gift-option">
+        <img src="gift3.jpg" alt="Gift 3">
+        <p>Gift 3 Name</p>
+        <button onclick="selectGift('Gift 3')">Select</button>
+    </div>
+    <p id="confirmationMessage" style="display: none;">Thank you for selecting your gift!</p>
+</div>
 
+    
     <div id="heartContainer"></div>
+    
     <script src="script.js"></script>
 </body>
 </html>
